@@ -1,0 +1,11 @@
+.venv/
+venv/
+env/
+
+__pycache__
+*.pyc
+*.pyo
+
+mlruns/
+#!src/mlflow.db 
+.DS_Store
