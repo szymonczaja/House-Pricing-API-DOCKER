@@ -37,7 +37,7 @@ The complete analytical process is documented in `notebooks/house_pricing.ipynb`
     * Identification of missing values and key correlations driving price.
 
 2.  **Custom Feature Engineering (Critical Step):**
-    * We developed custom Scikit-learn transformers to handle complex preprocessing within the pipeline.
+    * Custom Scikit-learn transformers were developed to handle complex preprocessing within the pipeline.
     * **`GroupedMedianTransformer`:** Implements smart imputation based on neighborhood medians rather than global averages.
     * **`FeatureTransformer`:** Generates powerful new features (e.g., Total Square Footage, House Age) to boost model performance.
 
