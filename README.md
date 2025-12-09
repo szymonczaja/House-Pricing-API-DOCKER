@@ -1,57 +1,62 @@
-🏠 House Price Prediction Project
+# 🏠 House Price Prediction Project
 
-This project aims to build a production-ready Machine Learning pipeline for predicting house prices using the Ames housing dataset. It demonstrates key skills in model deployment, custom data processing, and MLOps tools.
+## 📝 Project Overview
 
-🚀 Key Technologies Used
+This project aims to build a production-ready Machine Learning pipeline for predicting house prices using the Ames housing dataset. Unlike typical academic projects, this solution focuses on MLOps best practices, demonstrating key skills in model deployment, custom data processing, and pipeline management.
 
-This solution uses a modern tech stack to ensure the model can be easily managed and deployed:
+The core objective is to move beyond simple modeling to create a robust, deployable artifact that handles real-world data challenges through custom transformers and containerization.
 
-FastAPI: Used to create a fast and robust API service for handling prediction requests.
+---
 
-Docker: Used for containerization, packaging the application and all dependencies (including the ML model) into an isolated environment for easy deployment.
+## 🚀 Key Technologies Used
 
-MLflow: Used for model management. It saves and loads the complete prediction pipeline, ensuring consistency between training and deployment.
+The solution leverages a modern tech stack to ensure the model is scalable, reproducible, and easy to deploy:
 
-Scikit-learn / Custom Transformers: Used to build the core prediction logic.
+<p align="center">
+  <img src="https://img.shields.io/badge/-Python-3776AB?style=flat&logo=python&logoColor=white">
+  <img src="https://img.shields.io/badge/-FastAPI-009688?style=flat&logo=fastapi&logoColor=white">
+  <img src="https://img.shields.io/badge/-Docker-2496ED?style=flat&logo=docker&logoColor=white">
+  <img src="https://img.shields.io/badge/-MLflow-0194E2?style=flat&logo=mlflow&logoColor=white">
+  <img src="https://img.shields.io/badge/-scikit--learn-F7931E?style=flat&logo=scikit-learn&logoColor=white">
+  <img src="https://img.shields.io/badge/-Pandas-150458?style=flat&logo=pandas&logoColor=white">
+</p>
 
-🔬 Project Deep Dive: The Data Science Process
+* **FastAPI:** Creates a high-performance, robust API service for handling prediction requests with automatic validation.
+* **Docker:** Ensures consistency across environments by packaging the application, model, and dependencies into an isolated container.
+* **MLflow:** Manages the lifecycle of the ML model, logging the complete pipeline to ensure consistency between training and deployment.
+* **Scikit-learn / Custom Transformers:** Drives the core prediction logic with specialized transformers for data cleaning and feature creation.
 
-The notebooks/house_pricing.ipynb file contains the full analytical process:
+---
 
--Exploratory Data Analysis (EDA): Initial analysis to understand the data, identify missing values, and find key correlations.
+## 🔬 Project Deep Dive: The Data Science Process
 
--Model Prototyping: Experimentation with various ML algorithms to find the best performing model for price prediction.
+The complete analytical process is documented in `notebooks/house_pricing.ipynb`:
 
--Custom Feature Engineering: Critical Step. We developed custom Scikit-learn transformers (like GroupedMedianTransformer and FeatureTransformer) to handle complex data cleaning (imputation based on neighborhood median) and create powerful new features (e.g., total square footage, house age).
+1.  **Exploratory Data Analysis (EDA):**
+    * Initial deep dive to understand data distributions.
+    * Identification of missing values and key correlations driving price.
 
--Model Registration: The final, optimized model and its entire preprocessing pipeline are logged and saved using MLflow.
+2.  **Custom Feature Engineering (Critical Step):**
+    * We developed custom Scikit-learn transformers to handle complex preprocessing within the pipeline.
+    * **`GroupedMedianTransformer`:** Implements smart imputation based on neighborhood medians rather than global averages.
+    * **`FeatureTransformer`:** Generates powerful new features (e.g., Total Square Footage, House Age) to boost model performance.
 
--Model Explainability (SHAP): We used SHAP (SHapley Additive exPlanations) to interpret the model's predictions, ensuring transparency and trust in the final results.
+3.  **Model Prototyping:**
+    * Experimentation with various algorithms to identify the optimal regressor for the dataset.
 
-🛠️ How to Run the API (Using Docker)
-To run the API and test the model, you only need Docker Desktop installed.
+4.  **Model Registration:**
+    * The final, optimized model—along with its entire preprocessing pipeline—is logged and saved using **MLflow**, making it ready for immediate serving.
 
-1. Build the Container Image
+5.  **Model Explainability (SHAP):**
+    * Integration of **SHAP (SHapley Additive exPlanations)** to interpret predictions, providing transparency and building trust by explaining *why* a specific price was predicted.
+
+---
+
+## 🛠️ How to Run the API (Using Docker)
+
+To run the API and test the model, you only need **Docker Desktop** installed.
+
+### 1. Build the Container Image
 In the main project directory, build the image:
-
+```bash
 docker build -t house-pricing-api:latest .
-
-2. Run the Container
-Start the container and map the internal port 8000 to your computer's port 8000:
-
-docker run -d --name house-pricing-production -p 8000:8000 house-pricing-api:latest
-
-3. Test the Prediction Endpoint
-Open your browser and navigate to the API documentation:
-
-👉 http://localhost:8000/docs
-
-Use the POST /predict endpoint with the required house data to receive an instant price prediction.
-
-🔭 Future Improvements (Roadmap)
-
-To continue development, the next steps include:
-
-Testing (Pytest): Implement comprehensive unit and integration tests for the custom transformers and the API endpoints to ensure code quality.
-
-LLM Integration: Integrate a Large Language Model (LLM) to generate natural language reports that explain the prediction to the user (e.g., "This house is priced high because of its quality and location").
