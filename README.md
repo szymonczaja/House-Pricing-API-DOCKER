@@ -59,11 +59,15 @@ To run the API and test the model, you only need Docker Desktop installed.
 1. Build the Container Image
 
 In the main project directory, build the image:
+
+
 docker build -t house-pricing-api:latest .
 
 2. Run the Container
 
 Run the image, mapping the internal container port 8000 to your local machine:
+
+
 docker run -d --name house-pricing-production -p 8000:8000 house-pricing-api:latest
 
 3. Test the API Endpoints
