@@ -33,7 +33,6 @@ def export():
     mlflow.sklearn.save_model(model, EXPORT_PATH)
     
     print("SUKCES! Model wyeksportowany do src/docker_model")
-    print("-> Teraz przebuduj Dockera!")
 
 if __name__ == "__main__":
     export()
